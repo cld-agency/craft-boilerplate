@@ -1,0 +1,27 @@
+// --------------------------------------------
+// GLOBAL NORMALISER
+// --------------------------------------------
+
+*,*:before,*:after{box-sizing:border-box;}
+div,main,article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;margin:0;padding:0;}
+//audio,canvas,video{display:inline-block;}
+::selection {background:$accent;color:#333;}
+::-moz-selection {background:$accent;color:#333;}
+html{font-size:100%;text-size-adjust:100%;overflow-x:hidden;}
+nav ul{list-style:none;padding:0}
+a{text-decoration:none;}
+iframe,object,embed,img{border:0;max-width:100%}
+abbr{border-bottom:1px dotted #666;cursor:help}
+address{font-style:normal;}
+b,strong{font-weight:$bold;}
+i,em{font-style:italic;}
+// [name="google_conversion_frame"]{ position:absolute;bottom:0; } // add this if you're using any PPC ads
+
+// --------------------------------------------
+// LOBOTOMISED OWL
+// --------------------------------------------
+
+*+*{ @extend .spacing; } //http://alistapart.com/article/axiomatic-css-and-lobotomized-owls
+li+li,i,option,br,hr,svg,svg *,.button+.button,p:first-child,ul:first-child,ol:first-child,dl:first-child{
+	margin-top:0
+}

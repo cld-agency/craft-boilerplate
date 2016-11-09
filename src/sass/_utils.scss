@@ -1,0 +1,8 @@
+// --------------------------------------------
+// FONT SIZE
+// --------------------------------------------
+
+@mixin font-size( $sizeValue: 1.6 ) {
+  font-size: ($sizeValue * 1) + px;
+  font-size: ($sizeValue / 10 * 0.625) + rem;
+}

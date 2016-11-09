@@ -1,0 +1,40 @@
+// --------------------------------------------
+// LINKS & BUTTONS
+// --------------------------------------------
+
+a,button{
+	color:$brand;
+}
+
+a:visited{}
+a:hover,button:hover{
+	color:$accent2;
+}
+a:active{}
+a:focus {}
+
+.button,article button{
+	position:relative;
+	box-shadow:inset 0 1px rgba(#fff,.07);
+	background-color:$brand;
+	border-radius:5px;
+	border:1px solid darken($brand,2);
+	display:inline-block;
+	color:#fff!important;
+	text-align:center;
+	padding:4px 5%;
+	min-width:132px;
+	text-shadow:0 0 3px rgba(0,0,0,.33);
+	@include font-size(18);
+	font-family:$bodyFont;
+	font-weight:$bodyWeight;
+	cursor:pointer;
+	line-height:1.4em;
+	&:hover{
+
+	}
+	&:active{
+		top:1px;
+		box-shadow:inset 0 1px rgba(#fff,.4);
+	}
+}

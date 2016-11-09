@@ -1,0 +1,79 @@
+// --------------------------------------------
+// GENERIC NON-SEMANTIC HELPERS
+// --------------------------------------------
+
+.clearfix:before,.clearfix:after { content:"";display:table; }
+.clearfix:after,.clearBoth { clear:both; }
+//.last{ margin-right:0!important;padding-right:0!important}
+// .ir{overflow:hidden;text-indent:100%;white-space:nowrap;}
+//.blockLink{display:block;}
+//.blockLink p{color:$bodyColor;}
+// .loading{ padding:20px 0;text-indent:-99999px; background: url("/assets/img/AjaxLoader.gif") no-repeat 50% 50%; }
+//.js .no-js, .no-js .js { display: none; }
+
+%spacing{
+	margin-top:1.1em;
+	@media (min-width:$B) { margin-top:1.85em; }
+}
+%halfSpacing{
+	margin-top:0.65em;
+	@media (min-width:$B) { margin-top:0.925em; }
+}
+.spacing{
+	@extend %spacing;
+}
+
+// --------------------------------------------
+// PERSPECTIVES for 3D
+// --------------------------------------------
+
+// .perspective{ perspective:800px; }
+
+// --------------------------------------------
+// RESPONSIVE HELPERS
+// --------------------------------------------
+
+.fullscreen{
+	display:none!important;
+	@media (min-width:$B) {
+		display:block!important;
+	}
+}
+// .fullscreen-inline{
+// 	display:none!important;
+// 	@media (min-width:$B) {
+// 		display:inline!important;
+// 	}
+// }
+.mini{
+	@media (min-width:$B) {
+		display:none!important;
+	}
+}
+
+// --------------------------------------------
+// RESPONSIVE ASPECT RATIO HELPERS
+// --------------------------------------------
+
+// .embed-responsive {
+// 	position: relative;
+// 	display: block;
+// 	height: 0;
+// 	padding: 0;
+// 	overflow: hidden;
+// }
+// .embed-responsive .embed-responsive-item,
+// .embed-responsive iframe,
+// .embed-responsive embed,
+// .embed-responsive object,
+// .embed-responsive video {
+// 	position: absolute;
+// 	top: 0;
+// 	bottom: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	border: 0;
+// }
+// .embed-responsive-16by9 { padding-bottom: 56.25%; }
+// .embed-responsive-4by3 { padding-bottom: 75%; }
