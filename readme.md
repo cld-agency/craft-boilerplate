@@ -11,9 +11,10 @@ To use this Craft boilerplate:
 1. Visit your site.dev/admin to install Craft
 1. Install `assetrev` plugin and others if necessary.
 
-Next, run `npm update --save-dev` to update the version numbers in `package.json` to the latest and download the latest node modules.
-
-Finally, run `gulp` to start work.
+1. Update the vhost name in `gulpfile.js`
+1. Update the project name in `package.json` (no spaces or captial letters)
+1. Run `npm update --save-dev` to update the version numbers in `package.json` to the latest and download the latest node modules.
+1. Finally, run `gulp` to start work. You can also run `gulp icons` separately to generate the SVG sprite, or `gulp images` to compress all images.
 
 -------------------------------------------
 
