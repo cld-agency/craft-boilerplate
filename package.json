@@ -18,7 +18,6 @@
     "gulp-svgmin": "^1.2.3",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
-    "gulp-watch": "^4.3.10",
     "imagemin-pngquant": "^5.0.0",
     "jshint": "^2.9.4",
     "svgo": "^0.7.1"

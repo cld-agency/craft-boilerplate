@@ -37,6 +37,7 @@ $customConfig = array(
 		'omitScriptNameInUrls' => true,
 		'defaultImageQuality' => 95,
 		'cacheElementQueries' => true,
+		'errorTemplatePrefix' => "errors/",
 		'environmentVariables' => array(
 			'baseUrl'  => SITE_URL,
 			'basePath' => BASEPATH

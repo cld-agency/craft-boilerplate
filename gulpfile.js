@@ -22,7 +22,6 @@ var svgSprite = require('gulp-svg-sprite');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
 var gutil = require('gulp-util');
 var rev = require('gulp-rev');
 var del = require('del');
