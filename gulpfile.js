@@ -56,9 +56,10 @@ gulp.task('styles',['del-revs-css'], function(){
 		.pipe(sass({ outputStyle: 'compressed' }))
 		.on('error', function(err) { gutil.log('Line: ' + err.lineNumber + ' - ' + err.message); gutil.beep(); })
 		.pipe(autoprefixer())
+		.pipe(gulp.dest(compiledFolder+'/css')) // Duplicated as work-around for browserSync and file rev issues
+		.pipe(browserSync.reload({ stream: true }))
 		.pipe(rev())
 		.pipe(gulp.dest(compiledFolder+'/css'))
-		.pipe(browserSync.reload({ stream: true }))
 		.pipe(rev.manifest('rev-manifest.json',{merge:true}))
 		.pipe(gulp.dest(process.cwd()));
 });

@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<title>{{ title is defined ? title ~ ' | ' ~ siteName : siteName }}</title>
 	<meta name="description" content="{{ metaDesc is defined ? metaDesc|striptags : null }}">
-	<link rel="stylesheet" href="/assets/css/{{ rev('style.css') }}">
+	<link rel="stylesheet" href="/assets/css/{{ craft.config.env == 'local' ? 'style.css' : rev('style.css') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	{% if noIndex is defined and noIndex == 1 or craft.config.env != 'live' %}<meta name="robots" content="noindex, nofollow">{% endif %}
 
