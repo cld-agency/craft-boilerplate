@@ -6,11 +6,10 @@ To use this Craft boilerplate:
 1. Create a blank database and new local vhost pointing to your local clone's public_html directory
 1. Download the latest Craft and add the latest Craft `app` directory and the blank `storage` directory to your `craft` directory
 1. Copy `craft/config/local-SAMPLE` and rename to `local` (don't delete/rename the sample directory as it should remain in the repo).
-1. Edit `db.php` and `general.php` with your details
+1. Edit `craft/config/local/db.php` and `craft/config/local/general.php` with your details
 1. Edit `public_html/.htaccess` to account for your local vhost's name so that "www" isn't inserted.
 1. Visit your site.dev/admin to install Craft
-1. Install `assetrev` plugin and others if necessary.
-
+1. Install `assetrev` plugin, `minify`, and others if necessary (not included in this repo).
 1. Update the vhost name in `gulpfile.js`
 1. Update the project name in `package.json` (no spaces or captial letters)
 1. Run `npm update --save-dev` to update the version numbers in `package.json` to the latest and download the latest node modules.
