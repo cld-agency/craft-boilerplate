@@ -121,6 +121,15 @@ gulp.task('icons', function(){
 					},
 					'sprite': 'svg-sprite.html',
 				}
+			},
+			'shape': {
+        		transform: [{
+					svgo: {
+						plugins: [
+							{ removeTitle: true }
+						]
+					}
+				}]
 			}
 		}))
 		.pipe(gulp.dest(tmplFolder + '/_partials'));
