@@ -10,6 +10,7 @@
 return array(
 	'devMode'	=> true,
 	'testToEmailAddress' => 'yourname@cld.agency',
+	'disableTemplateMinifying' => true,
 
 	// Make member login settings nice and trusting
 	// http://www.php.net/manual/en/dateinterval.construct.php
