@@ -31,6 +31,13 @@ var del = require('del');
 // ----------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------
 
+function mergeConflict() {
+    // check if the rev-manifest has merge conflict markers.
+    // If so we'll need to trigger both scripts and styles tasks
+    var manifestContent = fs.readFileSync('rev-manifest.json', 'utf8');
+    return manifestContent.indexOf('<<<<') === -1 ? false : true;
+}
+
 // --------------------------------------------
 // BROWSER SYNC
 // --------------------------------------------
@@ -52,44 +59,64 @@ gulp.task('bs-reload', function () {
 // --------------------------------------------
 
 gulp.task('styles',['del-revs-css'], function(){
-	gulp.src(srcFolder + '/sass/style.scss')
-		.pipe(sass({ outputStyle: 'compressed' }))
-		.on('error', function(err) { gutil.log('Line: ' + err.lineNumber + ' - ' + err.message); gutil.beep(); })
-		.pipe(autoprefixer())
-		.pipe(gulp.dest(compiledFolder+'/css')) // Duplicated as work-around for browserSync and file rev issues
-		.pipe(browserSync.reload({ stream: true }))
-		.pipe(rev())
-		.pipe(gulp.dest(compiledFolder+'/css'))
-		.pipe(rev.manifest('rev-manifest.json',{merge:true}))
-		.pipe(gulp.dest(process.cwd()));
+    if (mergeConflict()){
+        _scripts();
+        _styles();
+    } else {
+        _styles();
+    }
 });
 // clear any previous revved CSS files based on their name of style-*
 gulp.task('del-revs-css', function () {
-	return del([compiledFolder + '/css' + '/**/style-*']);
+    return del([compiledFolder + '/css' + '/**/style-*']);
 });
+
+function _styles(){
+    return gulp.src(srcFolder + '/sass/style.scss')
+               .pipe(sass({ outputStyle: 'compressed' }))
+               .on('error', function(err) { gutil.log('Line: ' + err.lineNumber + ' - ' + err.message); gutil.beep(); })
+               .pipe(autoprefixer())
+               .pipe(gulp.dest(compiledFolder+'/css')) // Duplicated as work-around for browserSync and file rev issues
+               .pipe(browserSync.reload({ stream: true }))
+               .pipe(rev())
+               .pipe(gulp.dest(compiledFolder+'/css'))
+               .pipe(browserSync.reload({ stream: true }))
+               .pipe(rev.manifest('rev-manifest.json',{merge:true}))
+               .pipe(gulp.dest(process.cwd()));
+}
 
 // --------------------------------------------
 // SCRIPTS
 // --------------------------------------------
 
 gulp.task('scripts',['del-revs-js'], function(){
-	gulp.src(srcFolder + '/js/*.js')
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-		//.pipe(jshint.reporter('fail'))
-		.pipe(uglify())
-		.on('error', function(err) { gutil.log(err.message);gutil.beep(); })
-		.pipe(concat('js.min.js'))
-		.pipe(rev())
-		.pipe(gulp.dest(compiledFolder+'/js'))
-		.pipe(browserSync.reload({ stream: true }))
-		.pipe(rev.manifest('rev-manifest.json',{merge:true}))
-		.pipe(gulp.dest(process.cwd()));
+    if (mergeConflict()){
+        _scripts();
+        _styles();
+    } else {
+        _scripts();
+    }
 });
+
 // clear any previous revved JS files based on their name of js-*
 gulp.task('del-revs-js', function () {
-	return del([compiledFolder + '/js' + '/**/js-*']);
+    return del([compiledFolder + '/js' + '/**/js-*']);
 });
+
+function _scripts(){
+    return gulp.src(srcFolder + '/js/*.js')
+               .pipe(jshint())
+               .pipe(jshint.reporter('default'))
+               //.pipe(jshint.reporter('fail'))
+               .pipe(uglify())
+               .on('error', function(err) { gutil.log(err.message);gutil.beep(); })
+               .pipe(concat('js.min.js'))
+               .pipe(rev())
+               .pipe(gulp.dest(compiledFolder+'/js'))
+               .pipe(browserSync.reload({ stream: true }))
+               .pipe(rev.manifest('rev-manifest.json',{merge:true}))
+               .pipe(gulp.dest(process.cwd()));
+}
 
 // --------------------------------------------
 // IMAGE MINIFIER
