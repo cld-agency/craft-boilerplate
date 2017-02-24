@@ -42,6 +42,10 @@ $customConfig = array(
 			'baseUrl'  => SITE_URL,
 			'basePath' => BASEPATH
 		),
+		'defaultSearchTermOptions' => array(
+			'subLeft' => true,
+			'subRight' => true,
+		),
 		'devMode' => false,
 		'enableTemplateCaching' => false
 	),
