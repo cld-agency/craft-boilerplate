@@ -38,6 +38,7 @@ $customConfig = array(
 		'defaultImageQuality' => 95,
 		'cacheElementQueries' => true,
 		'errorTemplatePrefix' => "errors/",
+		'sendPoweredByHeader' => false,
 		'environmentVariables' => array(
 			'baseUrl'  => SITE_URL,
 			'basePath' => BASEPATH
