@@ -9,6 +9,7 @@ To use this Craft boilerplate:
 1. Edit `craft/config/local/db.php` and `craft/config/local/general.php` with your details
 1. Edit `craft/config/general.php` to use a unique CP trigger word (`cpTrigger`) instead of "admin".
 1. Edit `public_html/.htaccess` to account for your local vhost's name so that "www" isn't inserted.
+1. Edit `public_html/index.php` to whitelist your environment domain names (this protects against potential cache poisoning attacks).
 1. Navigate to your local `site.dev/{cpTrigger}` to install Craft
 1. Install `assetrev` plugin, `minify`, and others if necessary (not included in this repo).
 1. Update the vhost name in `gulpfile.js`
