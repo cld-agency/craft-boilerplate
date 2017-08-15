@@ -25,6 +25,7 @@ var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
 var rev = require('gulp-rev');
 var del = require('del');
+var fs = require("fs");
 
 // ----------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------
