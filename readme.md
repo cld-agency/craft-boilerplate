@@ -4,17 +4,18 @@ To use this Craft boilerplate:
 1. Clone this repo locally.
 1. For CLD devs only, turbo-charge the boilerplate by importing the CLD Craft boilerplate database and installing our standard plugin base (not included in this repo). Otherwise...
 1. Create a blank database and new local vhost pointing to your local clone's public_html directory
-1. Download the latest Craft and add the latest Craft `app` directory and the blank `storage` directory to your `craft` directory
+1. Download the latest Craft and add the latest Craft `app` directory and a blank `storage` directory to your `craft` directory
 1. Copy `craft/config/local-SAMPLE` and rename to `local` (don't delete/rename the sample directory as it should remain in the repo).
 1. Edit `craft/config/local/db.php` and `craft/config/local/general.php` with your details
 1. Edit `craft/config/general.php` to use a unique CP trigger word (`cpTrigger`) instead of "admin".
-1. Edit `public_html/.htaccess` to account for your local vhost's name so that "www" isn't inserted.
+1. If you're running Apache locally, edit `public_html/.htaccess` to account for your local vhost's name so that "www" isn't inserted.
 1. Edit `public_html/index.php` to whitelist your environment domain names (this protects against potential cache poisoning attacks).
 1. Navigate to your local `site.dev/{cpTrigger}` to install Craft
 1. Install `assetrev` plugin, `minify`, and others if necessary (not included in this repo).
 1. Update the vhost name in `gulpfile.js`
 1. Update the project name in `package.json` (no spaces or capital letters)
-1. Run `npm update --save-dev` to update the version numbers in `package.json` to the latest and download the latest node modules.
+1. If you haven't already, install `ncu` (`npm install -g npm-check-updates`) and then run `ncu -u` to automatically update all the version numbers in `package.json` to their latest stable releases.
+1. Run `npm install`
 1. Finally, run `gulp` to start work. You can also run `gulp icons` separately to generate the SVG sprite, or `gulp images` to compress all images.
 
 -------------------------------------------
