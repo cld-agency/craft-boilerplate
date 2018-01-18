@@ -15,7 +15,7 @@ RewriteRule ^(.+)/$ /$1 [R=301,L]
 
 #add dubdubs
 RewriteCond %{HTTP_HOST} !^www\.
-RewriteCond %{HTTP_HOST} !^sitename.dev
+RewriteCond %{HTTP_HOST} !^(.+).[dev|test|local|localhost]
 RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
 # Send would-be 404 requests to Craft
