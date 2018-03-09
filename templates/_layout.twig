@@ -1,3 +1,9 @@
+{% set transforms = {
+	ogImage: { mode:'crop', width:1200, height:1200 },
+} %}
+
+{# =============================================================================== #}
+
 {% minify %}
 <!doctype html>
 <html prefix="og: http://ogp.me/ns#" class="no-js">
@@ -7,42 +13,80 @@
 	<meta charset="utf-8">
 	<title>{{ title is defined ? title ~ ' | ' ~ siteName : siteName }}</title>
 	<meta name="description" content="{{ metaDesc is defined ? metaDesc|striptags : null }}">
-	<link rel="stylesheet" href="/assets/css/{{ craft.config.general.env == 'local' ? 'style.css' : rev('style.css') }}">
+	<link rel="stylesheet" href="/assets/css/{{ craft.app.config.general.env == 'local' ? 'style.css' : rev('style.css') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% if noIndex is defined and noIndex == 1 or craft.config.general.env != 'live' %}<meta name="robots" content="noindex, nofollow">{% endif %}
+	{% if noIndex is defined and noIndex == 1 or craft.app.config.general.env != 'live' %}<meta name="robots" content="noindex, nofollow">{% endif %}
 
 	{# ======================================
 	SOCIAL META. Use OG fallbacks to minimise complexity here.
+
+	NB: null coalescence operator doesn't seem to work as expected
+	here, so swapping out for nested ternaries :-/ I think that's
+	because Craft treats empty variables as non-null.
+
+	Don't be tempted to directly inject OG content here (i.e.
+	{{ entry.ogTitle }} - instead, keep the definition of that
+	data in each child template.
+
+	This approach has several advantages:
+	1) You can set cascading fallbacks per content type with a final fallback here.
+	2) This layout template becomes more reusable as it's not reliant on the existence of an 'entry'.
+	3) You can pass hardcoded content easily - no need to create singles for everything
+
+	Here's a sample child section for setting all available meta (exact implementation should vary depending on the available fallback fields so that authors don't have to enter explicit OG data every time):
+
+	{% set title = entry.titleTag ? entry.titleTag : entry.title %}
+	{% set metaDesc = entry.metaDesc ? entry.metaDesc : entry.summary ? entry.summary : null %}
+	{% set noIndex = entry.noIndex ?? null %}
+
+	{% set ogTitle = entry.ogTitle ?? null %}
+	{% set ogDesc =  entry.ogDesc ?? null %}
+	{% set ogImg = entry.ogImage.first ? entry.ogImage.first : entry.productImage.first ? entry.productImage.first : null %}
+	{% set ogType = entry.ogType ?? null %}
+	{% set twitterCreator = entry.twitterCreator ?? null %}
+	{% set twitterCard = entry.twitterCard ?? null %}
 	========================================= #}
 
-	{% set ogTitle %}{{ ogTitle ?? title ?? siteName }}{% endset %}
-	{% set ogDesc %}{{ ogDesc ?? metaDesc ?? null }}{% endset %}
-	{% set ogImg %}{{ ogImg ?? siteUrl ~ 'assets/img/logo.png' }}{% endset %}
+	{% set ogTitle = ogTitle is defined and ogTitle ? ogTitle : title is defined and title ? title : siteName %}
+	{% set ogDesc = ogDesc is defined and ogDesc ? ogDesc : metaDesc is defined and metaDesc ? metaDesc : null %}
 
-	<meta name="twitter:card" content="{{ twitterCard|default('summary') }}">
+	{% if ogImg is defined and ogImg %}
+		{% set ogImg = ogImg.getUrl(transforms.ogImage) %}
+	{% else %}
+		{% set ogImg = siteUrl ~ 'assets/img/logo-og.png' %}
+	{% endif %}
+
+	<meta name="twitter:card" content="{{ twitterCard ?? 'summary' }}">
 	{% if socialLinks.twitterHandle %}<meta name="twitter:site" content="@{{ socialLinks.twitterHandle }}">{% endif %}
 	{% if twitterCreator is defined and twitterCreator %}<meta name="twitter:creator" content="{{ twitterCreator }}">{% endif %}
 	<meta property="og:title" content="{{ ogTitle }}">
-	<meta property="og:type" content="{{ ogType|default('website') }}">
+	<meta property="og:type" content="{{ ogType ?? 'website' }}">
 	<meta property="og:url" content="{{ craft.request.url }}">
+
 	<meta property="og:image" content="{{ ogImg }}">
-	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc|striptags }}">{% endif %}
+	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc | striptags }}">{% endif %}
 	<meta property="og:site_name" content="{{ siteName }}">
-	{# <meta property="fb:admins" content="{{ socialLinks.fbAdmins }}"> #}
-	{% if not craft.request.isLivePreview and craft.config.general.env == 'live'%}
+
+	{% if socialLinks.fbAdmins|length %}
+		{% for fbAdmin in socialLinks.fbAdmins %}
+			<meta property="fb:admins" content="{{ fbAdmin.fbAccountNo }}">
+		{% endfor %}
+	{% endif %}
+
+	{% if not craft.request.isLivePreview and craft.app.config.general.env == 'live'%}
 		{{ customScripts.headAnalytics|raw }}
 	{% endif %}
 
 	{{ head() }}
 </head>
 
-<body class="{{ block('bodyClass') }}">
+<body class="{{ block('bodyClass') ?? null }}">
 
 	{{ beginBody() }}
 
 	{# =============================================================================== #}
 
-	<header class="site-header">
+	<header class="siteHeader">
 		<a class="logo"><img src="/assets/img/logo.svg" alt=""></a>
 	</header>
 
@@ -54,7 +98,7 @@
 
 	{# =============================================================================== #}
 
-	<footer class="site-footer">
+	<footer class="siteFooter">
 		<p>&copy; {{ siteName }} {{ "now"|date("Y") }}</p>
 	</footer>
 

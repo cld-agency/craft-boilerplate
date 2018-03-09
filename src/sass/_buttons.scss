@@ -19,7 +19,7 @@
 	cursor:pointer;
 	line-height:1.4em;
 	&:hover{
-
+		background-color:lighten($brand,10);
 	}
 	&:active{
 		top:1px;
