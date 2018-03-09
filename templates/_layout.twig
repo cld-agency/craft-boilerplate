@@ -1,0 +1,69 @@
+{% minify %}
+<!doctype html>
+<html prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');</script>
+	<meta charset="utf-8">
+	<title>{{ title is defined ? title ~ ' | ' ~ siteName : siteName }}</title>
+	<meta name="description" content="{{ metaDesc is defined ? metaDesc|striptags : null }}">
+	<link rel="stylesheet" href="/assets/css/{{ craft.config.general.env == 'local' ? 'style.css' : rev('style.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% if noIndex is defined and noIndex == 1 or craft.config.general.env != 'live' %}<meta name="robots" content="noindex, nofollow">{% endif %}
+
+	{# ======================================
+	SOCIAL META. Use OG fallbacks to minimise complexity here.
+	========================================= #}
+
+	{% set ogTitle %}{{ ogTitle ?? title ?? siteName }}{% endset %}
+	{% set ogDesc %}{{ ogDesc ?? metaDesc ?? null }}{% endset %}
+	{% set ogImg %}{{ ogImg ?? siteUrl ~ 'assets/img/logo.png' }}{% endset %}
+
+	<meta name="twitter:card" content="{{ twitterCard|default('summary') }}">
+	{% if socialLinks.twitterHandle %}<meta name="twitter:site" content="@{{ socialLinks.twitterHandle }}">{% endif %}
+	{% if twitterCreator is defined and twitterCreator %}<meta name="twitter:creator" content="{{ twitterCreator }}">{% endif %}
+	<meta property="og:title" content="{{ ogTitle }}">
+	<meta property="og:type" content="{{ ogType|default('website') }}">
+	<meta property="og:url" content="{{ craft.request.url }}">
+	<meta property="og:image" content="{{ ogImg }}">
+	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc|striptags }}">{% endif %}
+	<meta property="og:site_name" content="{{ siteName }}">
+	{# <meta property="fb:admins" content="{{ socialLinks.fbAdmins }}"> #}
+	{% if not craft.request.isLivePreview and craft.config.general.env == 'live'%}
+		{{ customScripts.headAnalytics|raw }}
+	{% endif %}
+
+	{{ head() }}
+</head>
+
+<body class="{{ block('bodyClass') }}">
+
+	{{ beginBody() }}
+
+	{# =============================================================================== #}
+
+	<header class="site-header">
+		<a class="logo"><img src="/assets/img/logo.svg" alt=""></a>
+	</header>
+
+	{# =============================================================================== #}
+
+	<main>
+		{{ block('content') }}
+	</main>
+
+	{# =============================================================================== #}
+
+	<footer class="site-footer">
+		<p>&copy; {{ siteName }} {{ "now"|date("Y") }}</p>
+	</footer>
+
+	{# =============================================================================== #}
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/assets/js/{{ rev('js.min.js') }}"></script>
+	{{ endBody() }}
+
+</body>
+</html>
+{% endminify %}
