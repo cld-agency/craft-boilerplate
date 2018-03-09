@@ -2,4 +2,78 @@
 // LAYOUT. This file deals with all global
 // components (ie, bits of UI that are (generally) on all pages)
 // for content-specific components, go to _components.scss
+// NB, elements with a class of .! are simply wrapper elements
+// that require no class/styling of their own but usually
+// serve as flex children.
 // --------------------------------------------
+
+main{
+	padding-top:$offsetTopMini;
+	@media (min-width:$B) {
+		padding-top:$offsetTop;
+	}
+}
+
+// --------------------------------------------
+// HORIZONTAL INNER PADDER
+// --------------------------------------------
+
+.in{
+	padding:0 $gutter*2;
+	margin:0 auto;
+	width:100%;
+	max-width:$inWidth + $gutterFixed*2;
+	@media (min-width:$B) {
+		padding:0 $gutterFixed;
+	}
+	.full &,&.full{ max-width:none }
+
+	// DELETE/ENABLE .in MODIFIER CLASSES AS APPROPRIATE...
+
+	// &.miniSqueeze{
+	// 	padding:0 $gutter*2;
+	// 	@media (min-width:$B) {
+	// 		padding:0 ($gutterFixed*1) + ($colFixed);
+	// 	}
+	// }
+	// &.squeeze{
+	// 	padding:0 $gutter*2;
+	// 	@media (min-width:$B) {
+	// 		padding:0 ($gutterFixed*2) + ($colFixed);
+	// 	}
+	// }
+	// &.superSqueeze{
+	// 	padding:0 $gutter*2;
+	// 	@media (min-width:$A2) {
+	// 		padding:0 ($gutterFixed*2) + ($colFixed);
+	// 	}
+	// 	@media (min-width:$C) {
+	// 		padding:0 ($gutterFixed*3) + ($colFixed*2);
+	// 	}
+	// }
+	// &.uberSqueeze{
+	// 	padding:0 $gutter*2;
+	// 	@media (min-width:$A2) {
+	// 		padding:0 ($gutterFixed*2) + ($colFixed);
+	// 	}
+	// 	@media (min-width:$B) {
+	// 		padding:0 ($gutterFixed*3) + ($colFixed*2);
+	// 	}
+	// 	@media (min-width:$D) {
+	// 		padding:0 ($gutterFixed*4) + ($colFixed*3);
+	// 	}
+	// }
+}
+
+// --------------------------------------------
+// SECTIONING (these typically control vertical padding)
+// --------------------------------------------
+
+.articleSection{
+	overflow:hidden;
+	margin-top:0;
+	padding:$sectionPaddingMini/2 0;
+	@media(min-width:$B) {
+		padding:$sectionPadding/2 0;
+	}
+}

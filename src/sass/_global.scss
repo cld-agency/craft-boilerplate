@@ -22,6 +22,6 @@ i,em{font-style:italic;}
 // --------------------------------------------
 
 *+*{ @extend .spacing; } //http://alistapart.com/article/axiomatic-css-and-lobotomized-owls
-li+li,i,option,br,hr,svg,svg *,.button+.button,p:first-child,ul:first-child,ol:first-child,dl:first-child{
-	margin-top:0
+li+li,i,option,br,hr,svg,svg *,.button+.button,p:first-child,ul:first-child,ol:first-child,dl:first-child,h1:first-child,h2:first-child,h3:first-child,table:first-child{
+	margin-top:0;
 }

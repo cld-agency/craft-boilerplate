@@ -21,7 +21,14 @@ $dark: #322d28; //dark brown
 // VARIOUS SHARED DIMENSIONS
 // -------------------
 
-$gutter: 2%;
+$sectionPadding: 93px;
+$sectionPaddingMini: 28px;
+
+$gutterFixed: 30px;
+$colFixed: 65px;
+$inWidth: ($colFixed * 12) + ($gutterFixed * 11); // 1110px
+$gutter: ($gutterFixed / $inWidth) * 100%; // 30px/1110px * 100% = 2.7027%
+$col: (100% - ($gutter * 11)) / 12; // 5.85%
 
 // -------------------
 // FONTS
