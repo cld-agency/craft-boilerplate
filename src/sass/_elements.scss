@@ -28,6 +28,18 @@ address{
 }
 
 // --------------------------------------------
+// LINKS
+// --------------------------------------------
+
+a{
+	text-decoration:underline;
+	text-decoration-skip:ink;
+	text-decoration-skip-ink:auto;
+	color:$bodyColor;
+	&:hover{ color:$accent; }
+}
+
+// --------------------------------------------
 // HEADINGS
 // --------------------------------------------
 

@@ -1,21 +1,9 @@
 // --------------------------------------------
-// LINKS & BUTTONS
+// BUTTONS
 // --------------------------------------------
 
-a,button{
-	color:$brand;
-}
-
-a:visited{}
-a:hover,button:hover{
-	color:$accent2;
-}
-a:active{}
-a:focus {}
-
-.button,article button{
+.button,button, a.button{
 	position:relative;
-	box-shadow:inset 0 1px rgba(#fff,.07);
 	background-color:$brand;
 	border-radius:5px;
 	border:1px solid darken($brand,2);
@@ -35,6 +23,8 @@ a:focus {}
 	}
 	&:active{
 		top:1px;
-		box-shadow:inset 0 1px rgba(#fff,.4);
 	}
+}
+.blockLink:hover .button{
+	@extend .button:hover
 }

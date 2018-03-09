@@ -1,0 +1,60 @@
+// --------------------------------------------
+// FLEXBOX GRID / UNITS. Mainly inspired by http://philipwalton.github.io/solved-by-flexbox/demos/grids/
+//
+// Usage:
+//
+// <div class="flexGrid [withGutters|withGuttersHalf]">
+//  <div class="unit unit20 (no styling here!)"><div class="moduleStylesHere">aaa</div></div>
+//  <div class="unit unit20 (no styling here!)"><div class="moduleStylesHere">bbb</div></div>
+//  <div class="unit unit20 (no styling here!)"><div class="moduleStylesHere">ccc</div></div>
+//  <div class="unit unit20 (no styling here!)"><div class="moduleStylesHere">ddd</div></div>
+// </div>
+// --------------------------------------------
+
+.flexGrid{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:flex-start;
+	list-style:none;
+	padding:0!important;
+}
+.withGutters,ul.withGutters:first-child{ // specificity booster
+	margin-left:-#{$gutter};
+	margin-top:#{$gutterFixed/3};
+	@media (min-width:$B) { margin-top:-#{$gutterFixed}; }
+	.unit{
+		padding:$gutterFixed/3 0 0 $gutter;
+		@media (min-width:$B) {
+			padding:$gutterFixed 0 0 $gutterFixed;
+		}
+	}
+}
+.unit{
+	display:flex;
+	flex-direction:column;
+	flex:0 0 100%;
+	max-width:100%;
+	text-align:start;
+	position:relative;
+}
+.unit33{
+	// default to 1=>3 breaking, cos a grid with two rows of 2+1 items is not nice...
+	//@media (min-width:$B) { flex:0 0 33.33%; max-width:33.33%;}
+	// use grid-alt for 1=>2=>3 breaking - more suitable when you have more than 3 items in total
+	.gridAlt & {
+		@media (min-width:$B) { flex:0 0 50%; max-width:50%; }
+		@media (min-width:$C) { flex:0 0 33.33%; max-width:33.33%; }
+	}
+}
+.unit25{
+	// default to 1=>2=>3=>4 breaking
+	@media (min-width:$A) { flex:0 0 50%; max-width:50%; }
+	@media (min-width:$B) { flex:0 0 33%; max-width:33%; }
+	@media (min-width:$C) { flex:0 0 25%; max-width:25%; }
+}
+.unit50{
+	@media (min-width:$B) { flex:0 0 50%; max-width:50%; }
+}
+
+// ie11 hack.
+_:-ms-fullscreen,:root .unit{ width:100%; }

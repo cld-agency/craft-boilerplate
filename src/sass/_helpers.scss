@@ -52,6 +52,24 @@
 }
 
 // --------------------------------------------
+// FLEXBOX HELPERS
+// --------------------------------------------
+
+.flex{ display:flex; }
+// .flexStart { justify-content:flex-start; }
+// .flexEnd { justify-content:flex-end; }
+.justifyBetween{ justify-content:space-between; }
+.justifyAround{ justify-content:space-around; }
+.justifyCenter{ justify-content:center; }
+.itemsCenter{ align-items:center; }
+.itemsStart{ align-items:flex-start; }
+// .flexFirst { order:0; }
+// .stickToFlexEnd{ margin-top:auto; }
+// .flexRow{ flex-direction:row; }
+.flexColumn{ flex-direction:column; }
+.flexWrap{ flex-wrap:wrap; }
+
+// --------------------------------------------
 // RESPONSIVE ASPECT RATIO HELPERS
 // --------------------------------------------
 

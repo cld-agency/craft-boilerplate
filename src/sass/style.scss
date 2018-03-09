@@ -1,18 +1,23 @@
-//--------------------
+@import 'utils'; // all mixins go here
 @import 'vars';
-@import 'utils';
+
 //--------------------
 
-@import 'global';
+@import 'global'; // reset
+@import 'grid'; // flexbox grid system
+
+//--------------------
+
 @import 'elements';
-@import 'typography';
-@import 'links-buttons';
-@import 'forms';
 @import 'layout';
+@import 'buttons';
+@import 'forms';
 @import 'icons';
+@import 'nav';
 @import 'components';
+@import 'typography';
 
 //--------------------
+
 @import 'helpers';
 @import 'shame';
-//--------------------
