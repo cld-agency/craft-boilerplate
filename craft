@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * Craft 3 Multi-Environment
@@ -12,11 +13,11 @@
  */
 
 /**
- * Craft web bootstrap file
+ * Craft console bootstrap file
  */
 
 // Set path constants
-define('CRAFT_BASE_PATH', dirname(__DIR__));
+define('CRAFT_BASE_PATH', __DIR__);
 define('CRAFT_VENDOR_PATH', CRAFT_BASE_PATH.'/vendor');
 
 // Load Composer's autoloader
@@ -38,5 +39,6 @@ if (!defined('CRAFT_ENVIRONMENT')) {
 }
 
 // Load and run Craft
-$app = require CRAFT_VENDOR_PATH.'/craftcms/cms/bootstrap/web.php';
-$app->run();
+$app = require CRAFT_VENDOR_PATH.'/craftcms/cms/bootstrap/console.php';
+$exitCode = $app->run();
+exit($exitCode);

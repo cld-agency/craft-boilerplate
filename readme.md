@@ -2,15 +2,13 @@ To use this Craft boilerplate:
 ====================================
 
 1. Download this repo (or clone it locally and then delete the `.git` directory for a fresh start).
-1. For CLD devs only, turbo-charge the boilerplate by importing the CLD Craft boilerplate database and installing our standard plugin base (not included in this repo). Otherwise...
+1. Run `composer install` to download Craft and plugins. (Currently just Minify and Asset-Rev plugins)
+1. For CLD devs only, turbo-charge the boilerplate by importing the CLD Craft boilerplate database (not included in this repo). Otherwise...
 1. Create a blank database and new local vhost pointing to your local clone's public_html directory
-1. Download the latest Craft and add the latest Craft `app` directory to your `craft` directory
-1. Copy `craft/config/local-SAMPLE` and rename to `local` (don't delete/rename the sample directory as it should remain in the repo).
-1. Edit `craft/config/local/db.php` and `craft/config/local/general.php` with your details
-1. Edit `craft/config/general.php` to use a unique CP trigger word (`cpTrigger`) instead of "admin".
-1. Edit `public_html/index.php` to whitelist your environment domain names (this protects against potential cache poisoning attacks).
+1. Copy `example.env.php` and rename to `.env.php` (don't delete/rename the example file as it should remain in the repo).
+1. Edit `example.env.php` with your local DB details and add a random `security_key`. If you want to connect directly to the remote DB you can do so here.
+1. Edit `config/general.php` to use a unique CP trigger word (`cpTrigger`) instead of "admin".
 1. Navigate to your local `site.test/{cpTrigger}` to install Craft
-1. Install `assetrev` plugin, `minify`, and others if necessary (not included in this repo).
 1. Update the vhost name in `gulpfile.js` - this is used by BrowserSync to proxy through.
 1. Update the project name in `package.json` (no spaces or capital letters)
 1. If you haven't already, install `ncu` (`npm install -g npm-check-updates`) and then run `ncu -u` to automatically update all the version numbers in `package.json` to their latest stable releases.
@@ -21,7 +19,7 @@ To use this Craft boilerplate:
 
 MIT License
 
-Copyright &copy; 2017-2018 Clever Little Design Ltd.
+Copyright &copy; 2018 Clever Little Design Ltd.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
