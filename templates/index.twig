@@ -6,7 +6,7 @@ HOME.
 
 {# =============================================================================== #}
 
-{% set entry = craft.entries.section('home').first() %}
+{% set entry = craft.entries.section('home').one() %}
 
 {% set title = entry.titleTag ? entry.titleTag : entry.title %}
 {% set metaDesc = entry.metaDesc ?? null %}
@@ -14,7 +14,7 @@ HOME.
 
 {% set ogTitle = entry.ogTitle ?? null %}
 {% set ogDesc =  entry.ogDesc ?? null %}
-{% set ogImg = entry.ogImage.first ?? null %}
+{% set ogImg = entry.ogImage.one ?? null %}
 {% set ogType = entry.ogType ?? null %}
 {% set twitterCreator = entry.twitterCreator ?? null %}
 {% set twitterCard = entry.twitterCard ?? null %}

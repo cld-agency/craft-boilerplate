@@ -41,7 +41,7 @@
 
 	{% set ogTitle = entry.ogTitle ?? null %}
 	{% set ogDesc =  entry.ogDesc ?? null %}
-	{% set ogImg = entry.ogImage.first ? entry.ogImage.first : entry.productImage.first ? entry.productImage.first : null %}
+	{% set ogImg = entry.ogImage.one ? entry.ogImage.one : entry.productImage.one ? entry.productImage.one : null %}
 	{% set ogType = entry.ogType ?? null %}
 	{% set twitterCreator = entry.twitterCreator ?? null %}
 	{% set twitterCard = entry.twitterCard ?? null %}
@@ -61,7 +61,7 @@
 	{% if twitterCreator is defined and twitterCreator %}<meta name="twitter:creator" content="{{ twitterCreator }}">{% endif %}
 	<meta property="og:title" content="{{ ogTitle }}">
 	<meta property="og:type" content="{{ ogType ?? 'website' }}">
-	<meta property="og:url" content="{{ craft.request.url }}">
+	<meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
 
 	<meta property="og:image" content="{{ ogImg }}">
 	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc | striptags }}">{% endif %}
@@ -73,7 +73,7 @@
 		{% endfor %}
 	{% endif %}
 
-	{% if not craft.request.isLivePreview and craft.app.config.general.env == 'live'%}
+	{% if not craft.app.request.isLivePreview and craft.app.config.general.env == 'live'%}
 		{{ customScripts.headAnalytics|raw }}
 	{% endif %}
 
