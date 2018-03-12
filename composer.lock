@@ -4,8 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fc7f061e732faa87d345f4f4f99c36a",
+    "content-hash": "ebc73cc4f9d202eef85712d6dd2fa0aa",
     "packages": [
+        {
+            "name": "amimpact/command-palette",
+            "version": "3.1.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/am-impact/amcommand/zipball/d0b8bca9f5d2393e4a4edd15f652dadedd32d4cf",
+                "reference": "d0b8bca9f5d2393e4a4edd15f652dadedd32d4cf",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Command Palette",
+                "handle": "command-palette",
+                "version": "3.1.0",
+                "schemaVersion": "3.0.0",
+                "hasSettings": true,
+                "hasCpSection": true,
+                "developer": "a&m impact",
+                "developerUrl": "http://www.am-impact.nl",
+                "description": "Command palette in Craft.",
+                "changelogUrl": "https://raw.githubusercontent.com/am-impact/amcommand/craft3/CHANGELOG.md",
+                "documentationUrl": "https://github.com/am-impact/amcommand/blob/master/README.md",
+                "components": {
+                    "entries": "amimpact\\commandpalette\\services\\Entries",
+                    "general": "amimpact\\commandpalette\\services\\General",
+                    "globals": "amimpact\\commandpalette\\services\\Globals",
+                    "plugins": "amimpact\\commandpalette\\services\\Plugins",
+                    "search": "amimpact\\commandpalette\\services\\Search",
+                    "settings": "amimpact\\commandpalette\\services\\Settings",
+                    "tasks": "amimpact\\commandpalette\\services\\Tasks",
+                    "utilities": "amimpact\\commandpalette\\services\\Utilities",
+                    "users": "amimpact\\commandpalette\\services\\Users"
+                },
+                "class": "amimpact\\commandpalette\\CommandPalette"
+            },
+            "autoload": {
+                "psr-4": {
+                    "amimpact\\commandpalette\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "a&m impact",
+                    "homepage": "http://www.am-impact.nl"
+                }
+            ],
+            "description": "Command palette in Craft.",
+            "keywords": [
+                "cms",
+                "command",
+                "craft",
+                "craftcms",
+                "plugin"
+            ],
+            "time": "2017-12-04T14:58:59+00:00"
+        },
         {
             "name": "barrelstrength/sprout-base",
             "version": "1.0.7",
@@ -505,6 +567,56 @@
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
             "time": "2017-02-14T19:40:03+00:00"
+        },
+        {
+            "name": "craftcms/ckeditor",
+            "version": "1.0.0-beta.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/ckeditor/zipball/185f6064cc135d717cf7b43c93aff2063ce399f1",
+                "reference": "185f6064cc135d717cf7b43c93aff2063ce399f1",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "^3.0.0-RC1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "CKEditor",
+                "handle": "ckeditor",
+                "changelogUrl": "https://raw.githubusercontent.com/craftcms/ckeditor/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/craftcms/ckeditor/archive/master.zip"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\ckeditor\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Edit rich text content in Craft CMS using CKEditor.",
+            "keywords": [
+                "ckeditor",
+                "cms",
+                "craftcms",
+                "html",
+                "yii2"
+            ],
+            "support": {
+                "email": "support@craftcms.com",
+                "issues": "https://github.com/craftcms/ckeditor/issues?state=open",
+                "source": "https://github.com/craftcms/ckeditor",
+                "docs": "https://github.com/craftcms/ckeditor",
+                "rss": "https://github.com/craftcms/ckeditor/commits/master.atom"
+            },
+            "time": "2018-01-15T18:06:22+00:00"
         },
         {
             "name": "craftcms/cms",
@@ -3264,7 +3376,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "craftcms/cms": 5
+        "craftcms/cms": 5,
+        "craftcms/ckeditor": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
