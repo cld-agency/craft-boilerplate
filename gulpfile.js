@@ -7,7 +7,7 @@ var gulp = require('gulp');
 var localHost = 'example.test';
 var compiledFolder = 'public_html/assets';
 var srcFolder = 'src';
-var tmplFolder = 'craft/templates';
+var tmplFolder = 'templates';
 
 // --------------------------------------------
 // PLUGINS
