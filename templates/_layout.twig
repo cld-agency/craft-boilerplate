@@ -64,7 +64,7 @@
 	<meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
 
 	<meta property="og:image" content="{{ ogImg }}">
-	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc | striptags }}">{% endif %}
+	{% if ogDesc %}<meta property="og:description" content="{{ ogDesc|striptags }}">{% endif %}
 	<meta property="og:site_name" content="{{ siteName }}">
 
 	{% if socialLinks.fbAdmins|length %}
@@ -73,8 +73,8 @@
 		{% endfor %}
 	{% endif %}
 
-	{% if not craft.app.request.isLivePreview and craft.app.config.general.env == 'live'%}
-		{{ customScripts.headAnalytics|raw }}
+	{% if not craft.app.request.isLivePreview and craft.app.config.general.env == 'live' %}
+		{{ customScripts.headScripts|raw }}
 	{% endif %}
 
 	{{ head() }}
@@ -83,6 +83,10 @@
 <body class="{{ block('bodyClass') ?? null }}">
 
 	{{ beginBody() }}
+
+	{% if not craft.app.request.isLivePreview and craft.app.config.general.env == 'live' %}
+		{{ customScripts.bodyStartScripts|raw }}
+	{% endif %}
 
 	{# =============================================================================== #}
 
@@ -106,6 +110,11 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="/assets/js/{{ rev('js.min.js') }}"></script>
+
+	{% if not craft.app.request.isLivePreview and craft.app.config.general.env == 'live' %}
+		{{ customScripts.bodyEndScripts|raw }}
+	{% endif %}
+
 	{{ endBody() }}
 
 </body>
