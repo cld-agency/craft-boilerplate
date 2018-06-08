@@ -12,7 +12,7 @@ body{
 
 p,address,ul,ol,dl,dd{
 	margin-bottom:0;
-	&:first-child{margin-top:0}
+	&:first-child{ margin-top:0 }
 	@include font-size(14);
 	line-height:1.5;
 	@media (min-width:$A) { @include font-size(15); }
@@ -52,15 +52,15 @@ h1,h2,h3,h4,h5,h6,dt,th{
 h1{
 	line-height:1.1;
 	@include font-size(32);
-	@media (min-width:$B){ @include font-size(48);line-height:1.2; };
+	@media (min-width:$B){ @include font-size(48);line-height:1.2; }
 }
 h2{
 	@include font-size(25);
-	@media (min-width:$B){ @include font-size(28); };
+	@media (min-width:$B){ @include font-size(28); }
 }
 h3,dt{
 	@include font-size(21);
-	@media (min-width:$B){ @include font-size(25); };
+	@media (min-width:$B){ @include font-size(25); }
 }
 h4{
 	@include font-size(18);
