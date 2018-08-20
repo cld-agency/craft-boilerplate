@@ -21,6 +21,7 @@ $craftEnvVars = [
     'DB_DATABASE' => 'REPLACE_ME',
     'DB_USER' => 'root',
     'DB_PASSWORD' => 'root',
+    'DB_TABLE_PREFIX' => 'craft',
 
     'DB_DRIVER' => 'mysql',
     'DB_SCHEMA' => 'public',
