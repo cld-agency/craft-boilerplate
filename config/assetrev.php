@@ -1,6 +1,6 @@
 <?php
 return array(
 	'*' => array(
-		'manifestPath' => '../rev-manifest.json',
+		'manifestPath' => './rev-manifest.json',
 	),
 );
