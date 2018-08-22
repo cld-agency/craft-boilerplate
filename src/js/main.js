@@ -25,25 +25,39 @@ var CLIENTNAME = {
 	bindUI: function(){
 
 		// --------------------------------------------
-		// NAVIGATION
+		// ON-OFF TOGGLERS
 		// --------------------------------------------
 
-		$('.js-menu-trigger').click(function(){
-			$(this).toggleClass('open');
+		$('.js-onOff').click(function(){
+			CLIENTNAME.onOff($(this));
 			return false;
 		});
-
-		// --------------------------------------------
-		// SOMETHING ELSE
-		// --------------------------------------------
 	},
 
 	// --------------------------------------------
-	// ANOTHER THING
+	// ON-OFF TOGGLERS This is a generic reusable
+	// function that switches one thing on (data-on=".selectors"),
+	// (or href attribute if it exists), and another thing off (data-off=".selectors").
+	// Use data-mode="instant" to avoid the need for creating .active class styles
+	//
+	// Pass data-suffix="-something" to break the link
+	// between ids and location.hash, thereby preventing
+	// browser auto-scroll to the hash location (See e.g.
+	// product tabs, where we want them to be URL-addressable
+	// but don't want the scroll position to change on window.load)
 	// --------------------------------------------
 
-	anotherThing: function(){
-
+	onOff: function(el){
+		var toggleTarget = (el.attr('href') && el.attr('href') != '#') ? $(el.attr('href')) : $(el.data('on'));
+		// reset toggleTarget if there's a suffix.
+		if (el.data('suffix')) { toggleTarget = $(el.data('on') + el.data('suffix')); }
+		var toggleOrigin = $(el.data('off'));
+		if (el.data('mode') == 'instant'){
+			toggleTarget.add(toggleOrigin).toggle();
+		} else {
+			toggleOrigin.removeClass('active');
+			toggleTarget.add(el).addClass('active');
+		}
 	}
 };
 
