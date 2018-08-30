@@ -1,0 +1,42 @@
+{% extends '_listing/default' %}
+
+{# ======================================
+GENERIC LISTING. NB: don't pass URL segment data
+directly into craft.entries as it's a security
+risk (effectively exposing all channel data to
+the front end). Be sure to whitelist chosen
+URIs in the switch/case statement instead. If
+that's not enough flexiblity, create a dedicated
+listing template e.g. _listings/{section-handle}.twig to override.
+
+THE PURPOSE OF THIS TEMPLATE IS TO SET
+ALL THE DATA READY FOR CONSUMPTION BY _listing/default.
+========================================= #}
+
+{# example code only... #}
+
+{# {% set item = category %}
+{% set title = item.titleTag ? item.titleTag : item.title|replace('Listing', '') %}
+{% set metaDesc = item.metaDesc ?? null %}
+
+{% switch craft.app.request.getSegment(1) %}
+
+	{% case 'news' %}
+		{% set entryIds = craft.entries.section('news').ids() %}
+		{% set entryCats = 'newsCategory' %}
+		{% set categories = craft.categories({
+			group: 'news',
+			relatedTo: { sourceElement: entryIds }
+		})%}
+
+	{% case 'case-studies' %}
+		{% set entryIds = craft.entries.section('caseStudies').ids() %}
+		{% set entryCats = 'caseStudyCategory' %}
+		{% set categories = craft.categories({
+			group: 'caseStudies',
+			relatedTo: { sourceElement: entryIds }
+		})%}
+
+{% endswitch %}
+
+{% paginate craft.entries.relatedTo(category).limit(12) as pageInfo, pageEntries %} #}
