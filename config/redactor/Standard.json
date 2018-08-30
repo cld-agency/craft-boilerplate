@@ -1,5 +1,23 @@
 {
-  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "image", "video"],
-  "plugins": ["source", "fullscreen", "video"],
-  "toolbarFixed": true
+  "buttons": [
+    "html",
+    "format",
+    "bold",
+    "italic",
+    "lists",
+    "link",
+    "image",
+    "file"
+  ],
+  "plugins": [
+    "fullscreen"
+  ],
+  "toolbarFixed": true,
+  "formatting": [
+    "h2",
+    "h3",
+    "h4",
+    "p",
+    "blockquote"
+  ]
 }
