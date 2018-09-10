@@ -17,7 +17,6 @@ var browserSync = require('browser-sync');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -124,12 +123,17 @@ function _scripts(){
 
 gulp.task('images', function () {
    return gulp.src(compiledFolder + '/img/**/*')
-        .pipe(imagemin({
-          progressive: true,
-          svgoPlugins: [{removeViewBox: false}],
-          use: [pngquant()]
-        }))
-        .pipe(gulp.dest(compiledFolder + '/img'));
+              .pipe(imagemin([
+                      imagemin.gifsicle({interlaced: true}),
+                      imagemin.jpegtran({progressive: true}),
+                      imagemin.optipng({optimizationLevel: 5}),
+                      imagemin.svgo({
+                        plugins: [
+                          {removeViewBox: false}
+                        ]
+                      })
+                    ]))
+              .pipe(gulp.dest(compiledFolder + '/img'));
 });
 
 // --------------------------------------------

@@ -99,6 +99,17 @@ nav li:before{display:none}
 img{
 	vertical-align:middle;
 }
+// because figures get automatically inserted by Redactor,
+// we need to style the defaults here. Use .figureReset to undo
+// figure:not(.figureReset){
+// 	text-align:center;
+// 	@extend %spacing;
+// 	img{
+// 		box-shadow:0 30px 60px -10px rgba(0,0,0,.3);
+// 		padding:1px;
+// 		border:1px solid #ccc;
+// 	}
+// }
 
 // --------------------------------------------
 // BLOCKQUOTES

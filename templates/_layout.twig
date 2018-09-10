@@ -1,5 +1,5 @@
 {% set transforms = {
-	ogImage: { mode:'crop', width:1200, height:1200 },
+	ogImg: { mode:'crop', width:1200, height:1200 },
 } %}
 
 {# =============================================================================== #}
@@ -51,7 +51,7 @@
 	{% set ogDesc = ogDesc is defined and ogDesc ? ogDesc : metaDesc is defined and metaDesc ? metaDesc : null %}
 
 	{% if ogImg is defined and ogImg %}
-		{% set ogImg = ogImg.getUrl(transforms.ogImage) %}
+		{% set ogImg = ogImg.getUrl(transforms.ogImg) %}
 	{% else %}
 		{% set ogImg = siteUrl ~ 'assets/img/logo-og.png' %}
 	{% endif %}
