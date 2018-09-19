@@ -20,7 +20,7 @@
 }
 .withGutters,ul.withGutters:first-child{ // specificity booster
 	margin-left:-#{$gutter};
-	margin-top:#{$gutterFixed/3};
+	margin-top:-#{$gutterFixed/3};
 	@media (min-width:$B) { margin-left:-#{$gutterFixed};margin-top:-#{$gutterFixed}; }
 	.unit{
 		padding:$gutterFixed/3 0 0 $gutter;
