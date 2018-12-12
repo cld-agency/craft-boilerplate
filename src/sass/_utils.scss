@@ -3,17 +3,31 @@
 // --------------------------------------------
 
 @mixin font-size( $sizeValue: 1.6 ) {
-  font-size: ($sizeValue / 10 * 0.625) + rem;
+  font-size: font-size($sizeValue);
+}
+@function font-size( $sizeValue: 1.6 ) {
+  @return ($sizeValue / 10 * 0.625) * 1rem;
 }
 
 // --------------------------------------------
-// FLUID ANYTHING (typically font-size)
+// FLUID ANYTHING (typically font-size). If using font-size, property values passed in px
+// will be automatically converted to rems. If not using font-size, you cannot
+// mix unit types between the breakpoint values and the property values - in other
+// words, if your breakpoints are in ems, your property values must also be in ems (or rems).
+// ... if your breakpoints are in px, your property values must also be in px.
 //
 // Usage:
+//
+// @include fluid($properties, $breakpoint-min, $breakpoint-max, $property-value-at-breakpoint-min-and-below, $property-value-at-breakpoint-max-and-above);
 //
 // Single property
 // html {
 //   @include fluid(font-size, 320px, 1366px, 14px, 18px);
+// }
+//
+// with em-based breakpoint variables and font-size auto-conversion from px to rems:
+// h1 {
+//   @include fluid(font-size, $A, $C, 20px, 55px);
 // }
 //
 // Multiple properties with same values
@@ -24,6 +38,12 @@
 // --------------------------------------------
 
 @mixin fluid($properties, $min-vw, $max-vw, $min-value, $max-value) {
+
+  @if 'font-size' in $properties{
+    $max-value: font-size(strip-unit($max-value));
+    $min-value: font-size(strip-unit($min-value));
+  }
+
   @each $property in $properties {
     #{$property}: $min-value;
   }
