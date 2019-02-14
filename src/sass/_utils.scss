@@ -35,13 +35,20 @@
 //   @include fluid(padding-bottom padding-top, 20em, 70em, 2em, 4em);
 // }
 //
+// if you want to mentally work in px values, just convert on the fly e.g. value * 1rem:
+// .articleSection{/
+//    @include fluid(padding-top padding-bottom, $A, $E, $sectionPaddingMini/2 * 1rem, $sectionPadding/4 * 1rem);
+// }
+//
 // --------------------------------------------
 
 @mixin fluid($properties, $min-vw, $max-vw, $min-value, $max-value) {
 
   @if 'font-size' in $properties{
-    $max-value: font-size(strip-unit($max-value));
-    $min-value: font-size(strip-unit($min-value));
+    @if unit($min-vw) == 'em' or unit($min-vw) == 'rem' {
+      $max-value: font-size(strip-unit($max-value));
+      $min-value: font-size(strip-unit($min-value));
+    }
   }
 
   @each $property in $properties {
@@ -50,7 +57,11 @@
 
   @media (min-width: $min-vw) {
     @each $property in $properties {
-      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      @if unit($min-vw) == 'em' or unit($min-vw) == 'rem' {
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{strip-unit($min-vw)}rem) / #{strip-unit($max-vw - $min-vw)});
+      } @else {
+        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+      }
     }
   }
 
