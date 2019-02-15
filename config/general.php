@@ -17,6 +17,7 @@ return [
 
     // All environments
     '*' => [
+        'isSystemLive' => true,
         'cpTrigger' => 'admin',
         'defaultWeekStartDay' => 1,
         'cacheDuration' => false,
@@ -41,7 +42,7 @@ return [
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'isSystemOn' => true,
+        'siteUrl' => 'https://example.com',
     ],
 
     // dev (pre-production) environment
@@ -50,7 +51,7 @@ return [
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'isSystemOn' => true,
+        'siteUrl' => 'https://example.com',
     ],
 
     // Local (development) environment
@@ -59,6 +60,6 @@ return [
         'backupOnUpdate' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
-        'isSystemOn' => true,
+        'siteUrl' => 'http://' . $_SERVER['SERVER_NAME'],
     ],
 ];

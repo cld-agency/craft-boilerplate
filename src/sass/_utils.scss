@@ -44,6 +44,7 @@
 
 @mixin fluid($properties, $min-vw, $max-vw, $min-value, $max-value) {
 
+  // convert values to rems if breakpoints are in ems or rems
   @if 'font-size' in $properties{
     @if unit($min-vw) == 'em' or unit($min-vw) == 'rem' {
       $max-value: font-size(strip-unit($max-value));
@@ -57,6 +58,7 @@
 
   @media (min-width: $min-vw) {
     @each $property in $properties {
+      // if breakpoints are in px, need to ensure we don't hardcode the rem unit in there...
       @if unit($min-vw) == 'em' or unit($min-vw) == 'rem' {
         #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{strip-unit($min-vw)}rem) / #{strip-unit($max-vw - $min-vw)});
       } @else {
