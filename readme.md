@@ -2,12 +2,10 @@ To use this Craft boilerplate:
 ====================================
 
 1. Download this repo (or clone it locally and then delete the `.git` directory for a fresh start).
-1. Run `composer install` to download Craft and plugins. (Currently just Minify and Asset-Rev plugins).
-1. Run `composer update` to update them.
+1. Run `composer install` to download Craft and plugins.
 1. Create a blank local database and new local vhost pointing to your local clone's public_html directory.
-1. For CLD devs only, turbo-charge the boilerplate by importing the CLD Craft boilerplate database (not included in this repo).
-1. Duplicate `example.env.php` and rename to `.env.php` (don't delete/rename the example file as it should remain in the repo).
-1. Edit `.env.php` with your local DB details and add a random `security_key`. If you want to connect directly to the remote DB you can do so here.
+1. Duplicate `example.env` and rename to `.env` (don't delete/rename the example file as it should remain in the repo).
+1. Edit `.env` with your local DB details and add a random `security_key`. If you want to connect directly to the remote DB you can do so here.
 1. Edit `config/general.php` to use a unique CP trigger word (`cpTrigger`) instead of "admin".
 1. Navigate to your local `site.test/{cpTrigger}` to install Craft.
 1. Update the vhost name in `gulpfile.js` - this is used by BrowserSync to proxy through.

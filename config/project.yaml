@@ -1,0 +1,447 @@
+dateModified: 1554411947
+email:
+  fromEmail: $SYSTEM_EMAIL
+  fromName: $SYSTEM_EMAIL_NAME
+  template: null
+  transportType: craft\mail\transportadapters\Sendmail
+  transportSettings: null
+fieldGroups:
+  274a893e-963a-4171-ad25-20d477bba393:
+    name: Common
+  03048e9b-54e8-44cc-a12d-4f0997217dd9:
+    name: SEO
+  4ad6012a-3670-4909-9ef9-237438357a33:
+    name: Globals
+fields:
+  d466bab8-6dc0-4ee7-95e5-837086c7e806:
+    name: 'Browser title'
+    handle: titleTag
+    instructions: 'This is the title that appears in the browser tab. It is also announced by screenreaders as the main title of the current page, and can be important for search engine indexing purposes.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: '250'
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  0899f511-c471-44b8-a6e9-8909c6b416b6:
+    name: 'Meta description'
+    handle: metaDesc
+    instructions: 'The meta description is read by search engine crawlers, and sometimes appears as a snippet in search engine results pages listings. It should be a concise description of this content - Keep to under 300 characters.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: '300'
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  ba8432f6-e235-499b-9d69-44af80f9fb91:
+    name: 'No index'
+    handle: noIndex
+    instructions: 'Adds a meta `noindex` tag to the page to prevent most search engines from indexing it.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Lightswitch
+    settings:
+      default: ''
+    contentColumnType: boolean
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  11d8fecc-b5a5-4208-806f-f124e36cc476:
+    name: 'OG description'
+    handle: ogDesc
+    instructions: 'The description that will appear on the Twitter Card or Facebook post or any other third party service that consumes OG meta data. I''ll use the meta description if this is left blank.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  b21de975-60c8-4344-9dc5-c369002dee2c:
+    name: 'Alt text'
+    handle: alt
+    instructions: ''
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 274a893e-963a-4171-ad25-20d477bba393
+  a74959ec-b321-4072-9423-77054790c12f:
+    name: 'OG image'
+    handle: ogImage
+    instructions: 'OG images should be no more than 1MB in file size. For Twitter ''summary'' cards, the image should be a square at least 120px x 120px. For Twitter ''large summary'' cards they can be any dimensions.'
+    searchable: false
+    translationMethod: site
+    translationKeyFormat: null
+    type: craft\fields\Assets
+    settings:
+      useSingleFolder: '1'
+      defaultUploadLocationSource: 'volume:1c87837e-f662-49fd-9365-baa8df6ccdfb'
+      defaultUploadLocationSubpath: ''
+      singleUploadLocationSource: 'volume:1c87837e-f662-49fd-9365-baa8df6ccdfb'
+      singleUploadLocationSubpath: ''
+      restrictFiles: '1'
+      allowedKinds:
+        - image
+      sources: '*'
+      source: null
+      targetSiteId: null
+      viewMode: large
+      limit: '1'
+      selectionLabel: ''
+      localizeRelations: false
+    contentColumnType: string
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  ec6db0b9-8626-4139-9bf6-d1916dcb07f4:
+    name: 'OG title override'
+    handle: ogTitle
+    instructions: 'Override both the browser title and the entry title for services that consume OG meta data. Use this if you want to use unique titles in your OG snippets without affecting the website display.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  979fc250-fe48-4092-90c5-4b7fd713d51d:
+    name: 'OG type'
+    handle: ogType
+    instructions: 'This changes how your content is shown in social sharing services. If you don''t specify a type, the default will be "website".'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Dropdown
+    settings:
+      options:
+        -
+          label: Website
+          value: website
+          default: ''
+        -
+          label: Article
+          value: article
+          default: ''
+        -
+          label: Place
+          value: place
+          default: ''
+        -
+          label: Video
+          value: video
+          default: ''
+    contentColumnType: string
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  350a35ea-503c-4623-a98b-081be0528c8e:
+    name: 'Twitter card'
+    handle: twitterCard
+    instructions: 'Select the type of Twitter Card you want to use. Default will be ''summary'' if you make no selection.'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Dropdown
+    settings:
+      options:
+        -
+          label: Summary
+          value: summary
+          default: ''
+        -
+          label: 'Summary Large Image'
+          value: summary_large_image
+          default: ''
+    contentColumnType: string
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  233a2186-2bca-45b4-af79-08096d8f70f5:
+    name: 'Twitter creator'
+    handle: twitterCreator
+    instructions: '@username for the content creator / author of this entry. Note that this should NOT be the generic Twitter account of the company. It is only used in conjunction with the Summary Large Image type.'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 03048e9b-54e8-44cc-a12d-4f0997217dd9
+  4d83d38a-13e0-4220-9dc2-1469f03fd053:
+    name: 'Body end scripts'
+    handle: bodyEndScripts
+    instructions: 'Anything you add here will be added to the end of the <body> tag on every page.'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: '1'
+      multiline: '1'
+      initialRows: '8'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  ef22c697-6a26-4ca6-9d8a-b4c284c28124:
+    name: 'Body start scripts'
+    handle: bodyStartScripts
+    instructions: 'Anything you add here will be added to the start of the <body> tag on every page.'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: '1'
+      multiline: '1'
+      initialRows: '8'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  8a4994bc-b351-4fd1-abfd-cda9a0daac32:
+    name: 'Head scripts'
+    handle: headScripts
+    instructions: 'Anything you add here will be added to the global document <head> section. Wherever possible, put scripts in the body-end section instead, as anything added here will block the rendering of the site until all the extra assets have been downloaded and executed.'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: '1'
+      multiline: '1'
+      initialRows: '8'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  b75414c6-c41e-4199-baad-30c03dc6ad9d:
+    name: Facebook
+    handle: facebook
+    instructions: 'Full link to your Facebook page'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: 'https://www.facebook.com/youraccount'
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  f8c14ea0-00f7-4fe4-9f1f-db9a65139f0a:
+    name: 'Facebook admins'
+    handle: fbAdmins
+    instructions: 'Add the numeric Facebook account numbers who administer the company''s Facebook page'
+    searchable: true
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\Table
+    settings:
+      addRowLabel: 'Add a row'
+      maxRows: ''
+      minRows: ''
+      columns:
+        col1:
+          heading: 'Account number'
+          handle: fbAccountNo
+          width: ''
+          type: number
+      defaults:
+        -
+          col1: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  3740e0b4-c273-41ac-b247-cf683407102f:
+    name: 'Linked In'
+    handle: linkedIn
+    instructions: 'Full link to your LinkedIn profile'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: ''
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+  7890537b-f64b-44a3-b0a7-34b7872c193e:
+    name: 'Twitter username'
+    handle: twitterHandle
+    instructions: 'PLEASE DO NOT INCLUDE the @ symbol or the twitter.com domain name (this is so we can reuse this field more easily).'
+    searchable: false
+    translationMethod: none
+    translationKeyFormat: null
+    type: craft\fields\PlainText
+    settings:
+      placeholder: company_twitter_name
+      code: ''
+      multiline: ''
+      initialRows: '4'
+      charLimit: ''
+      columnType: text
+    contentColumnType: text
+    fieldGroup: 4ad6012a-3670-4909-9ef9-237438357a33
+globalSets:
+  b3658b61-24e9-4dde-8e76-76a2479a3165:
+    name: 'Custom scripts'
+    handle: customScripts
+    fieldLayouts:
+      cf75d563-4098-461e-be93-557bb6444fdf:
+        tabs:
+          -
+            name: Scripts
+            sortOrder: 1
+            fields:
+              4d83d38a-13e0-4220-9dc2-1469f03fd053:
+                required: false
+                sortOrder: 1
+              ef22c697-6a26-4ca6-9d8a-b4c284c28124:
+                required: false
+                sortOrder: 2
+              8a4994bc-b351-4fd1-abfd-cda9a0daac32:
+                required: false
+                sortOrder: 3
+  166afb79-705e-4a92-a0f9-c170a8081baa:
+    name: 'Social links'
+    handle: socialLinks
+plugins:
+  assetrev:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  cp-field-inspect:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  minify:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.2
+sections:
+  7eba43a8-bd7f-4f44-bb74-f9a616b80f5b:
+    name: 'Home pages'
+    handle: home
+    type: structure
+    enableVersioning: true
+    propagateEntries: true
+    siteSettings:
+      2224eb82-9c93-4d02-b0af-ccc2f4955971:
+        enabledByDefault: true
+        hasUrls: true
+        uriFormat: home
+        template: index
+    structure:
+      uid: 8313200c-9db2-4cf6-be7f-c73820e69688
+      maxLevels: '1'
+    entryTypes:
+      f4e0c37d-a8b8-48ce-b02f-a98e9509524d:
+        name: 'Home pages'
+        handle: home
+        hasTitleField: true
+        titleLabel: Title
+        titleFormat: null
+        sortOrder: 1
+siteGroups:
+  1cb3797b-3039-4b3a-9397-02b477248cf5:
+    name: Example
+sites:
+  2224eb82-9c93-4d02-b0af-ccc2f4955971:
+    siteGroup: 1cb3797b-3039-4b3a-9397-02b477248cf5
+    name: Corday
+    handle: default
+    language: en-GB
+    hasUrls: true
+    baseUrl: $SITE_URL
+    sortOrder: 1
+    primary: true
+system:
+  edition: pro
+  name: 'Craft boilerplate'
+  live: true
+  schemaVersion: 3.1.26
+  timeZone: Europe/London
+users:
+  requireEmailVerification: true
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoVolumeUid: null
+  photoSubpath: ''
+volumes:
+  1c87837e-f662-49fd-9365-baa8df6ccdfb:
+    name: Images
+    handle: images
+    type: craft\volumes\Local
+    hasUrls: true
+    url: /media/images
+    settings:
+      path: '@webroot/media/images'
+    sortOrder: '1'
+    fieldLayouts:
+      1f1aa77f-0a4e-4aab-923b-9625e0da6824:
+        tabs:
+          -
+            name: Content
+            sortOrder: 1
+            fields:
+              b21de975-60c8-4344-9dc5-c369002dee2c:
+                required: false
+                sortOrder: 1
+  f5381ebe-c081-4e3c-8f41-b5184a6b948c:
+    name: Downloads
+    handle: downloads
+    type: craft\volumes\Local
+    hasUrls: true
+    url: /media/downloads
+    settings:
+      path: '@webroot/media/downloads'
+    sortOrder: 2

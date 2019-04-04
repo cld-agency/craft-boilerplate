@@ -1,22 +1,19 @@
 <?php
 /**
- * Craft 3 Multi-Environment
- * Efficient and flexible multi-environment config for Craft 3 CMS
- *
- * $_ENV constants are loaded by craft3-multi-environment from .env.php via
- * ./public_html/index.php for web requests, and ./craft for console requests
-
-/**
  * General Configuration
  *
- * All of your system's general configuration settings go in here.
- * You can see a list of the default settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
+ * All of your system's general configuration settings go in here. You can see a
+ * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
+ *
+ * @see \craft\config\GeneralConfig
  */
 
 return [
 
     // All environments
     '*' => [
+        'siteUrl' => getenv('SITE_URL'),
+        'useProjectConfigFile' => true,
         'isSystemLive' => true,
         'cpTrigger' => 'admin',
         'defaultWeekStartDay' => 1,
@@ -28,12 +25,9 @@ return [
         'enableCsrfProtection' => true,
         'generateTransformsBeforePageLoad' => true,
         'omitScriptNameInUrls' => true,
-        'securityKey' => getenv('CRAFTENV_SECURITY_KEY'),
+        'securityKey' => getenv('SECURITY_KEY'),
         'useEmailAsUsername' => true,
         'usePathInfo' => true,
-
-        // Our own custom stuff...
-        'env' => CRAFT_ENVIRONMENT, // set in index.php (via .env.php)
     ],
 
     // Live (production) environment
@@ -42,7 +36,7 @@ return [
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'siteUrl' => 'https://example.com',
+
     ],
 
     // dev (pre-production) environment
@@ -51,7 +45,6 @@ return [
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
-        'siteUrl' => 'https://example.com',
     ],
 
     // Local (development) environment
@@ -60,6 +53,5 @@ return [
         'backupOnUpdate' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
-        'siteUrl' => 'http://' . $_SERVER['SERVER_NAME'],
     ],
 ];

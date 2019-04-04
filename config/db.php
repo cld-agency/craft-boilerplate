@@ -8,12 +8,12 @@
  */
 
 return [
-    'database' => getenv('CRAFTENV_DB_DATABASE'),
-    'driver' => getenv('CRAFTENV_DB_DRIVER'),
-    'server' => getenv('CRAFTENV_DB_SERVER'),
-    'user' => getenv('CRAFTENV_DB_USER'),
-    'password' => getenv('CRAFTENV_DB_PASSWORD'),
-    'schema' => getenv('CRAFTENV_DB_SCHEMA'),
-    'tablePrefix' => getenv('CRAFTENV_DB_TABLE_PREFIX'),
-    'port' => getenv('CRAFTENV_DB_PORT'),
+    'database' => getenv('DB_DATABASE'),
+    'driver' => getenv('DB_DRIVER'),
+    'server' => getenv('DB_SERVER'),
+    'user' => getenv('DB_USER'),
+    'password' => getenv('DB_PASSWORD'),
+    'schema' => getenv('DB_SCHEMA'),
+    'tablePrefix' => getenv('DB_TABLE_PREFIX'),
+    'port' => getenv('DB_PORT'),
 ];
