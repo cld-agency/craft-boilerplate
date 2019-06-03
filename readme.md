@@ -2,6 +2,7 @@ To use this Craft boilerplate:
 ====================================
 
 1. Download this repo (or clone it locally and then delete the `.git` directory for a fresh start).
+1. To ensure that the ready-made Project Config gets processed, which includes various default fields and sections etc, you must first manually update Craft's system schema version number in `config/project.yaml` to match the version of Craft that you're installing. (Under `system -> schemaVersion`).
 1. Run `composer install` to download Craft and plugins.
 1. Create a blank local database and new local vhost pointing to your local clone's public_html directory.
 1. Duplicate `example.env` and rename to `.env` (don't delete/rename the example file as it should remain in the repo).
@@ -18,7 +19,7 @@ To use this Craft boilerplate:
 
 MIT License
 
-Copyright &copy; 2018 Clever Little Design Ltd.
+Copyright &copy; 2019 Clever Little Design Ltd.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

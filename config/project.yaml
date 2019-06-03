@@ -397,7 +397,7 @@ siteGroups:
 sites:
   2224eb82-9c93-4d02-b0af-ccc2f4955971:
     siteGroup: 1cb3797b-3039-4b3a-9397-02b477248cf5
-    name: Corday
+    name: Craft boilerplate
     handle: default
     language: en-GB
     hasUrls: true

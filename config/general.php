@@ -12,7 +12,15 @@ return [
 
     // All environments
     '*' => [
+        'env' => getenv('ENVIRONMENT'),
+
         'siteUrl' => getenv('SITE_URL'),
+        // if multi-site, do it like this...
+        // 'siteUrl' => [
+        //     'siteOneHandle' => getenv('SITE1_URL'),
+        //     'siteTwoHandle' => getenv('SITE2_URL'),
+        // ],
+
         'useProjectConfigFile' => true,
         'isSystemLive' => true,
         'cpTrigger' => 'admin',
@@ -45,6 +53,7 @@ return [
         'backupOnUpdate' => false,
         'devMode' => false,
         'enableTemplateCaching' => true,
+        'userSessionDuration' => false,
     ],
 
     // Local (development) environment
@@ -53,5 +62,6 @@ return [
         'backupOnUpdate' => true,
         'devMode' => true,
         'enableTemplateCaching' => false,
+        'userSessionDuration' => false,
     ],
 ];
