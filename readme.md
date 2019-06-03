@@ -11,7 +11,6 @@ To use this Craft boilerplate:
 1. Navigate to your local `site.test/{cpTrigger}` to install Craft.
 1. Update the vhost name in `gulpfile.js` - this is used by BrowserSync to proxy through.
 1. Update the project name in `package.json` (no spaces or capital letters).
-1. If you haven't already, install `ncu` (`npm install -g npm-check-updates`) and then run `ncu -u` to automatically update all the version numbers in `package.json` to their latest stable releases.
 1. Run `npm install`.
 1. Finally, run `gulp` to start work. You can also run `gulp images` separately to compress all images and SVGs in the `assets/img` directory.
 
