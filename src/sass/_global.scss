@@ -11,6 +11,7 @@ html{font-size:100%;text-size-adjust:100%;overflow-x:hidden;}
 nav ul{list-style:none;padding:0}
 a{text-decoration:none;}
 iframe,object,embed,img{border:0;max-width:100%}
+img[src$=".svg"]{width:100%;} // for IE11
 abbr{border-bottom:1px dotted #666;cursor:help;text-decoration:none;}
 address{font-style:normal;}
 b,strong{font-weight:$bold;}
@@ -22,6 +23,6 @@ i,em{font-style:italic;}
 // --------------------------------------------
 
 *+*{ @extend .spacing; } //http://alistapart.com/article/axiomatic-css-and-lobotomized-owls
-span,li+li,i,option,br,hr,svg,svg *,.button+.button,p:first-child,ul:first-child,ol:first-child,dl:first-child,h1:first-child,h2:first-child,h3:first-child,table:first-child,.yii-debug-toolbar__block *{
+span,li+li,i,option,br,hr,svg,svg *,.button+.button,blockquote:first-child,p:first-child,ul:first-child,ol:first-child,dl:first-child,h1:first-child,h2:first-child,h3:first-child,table:first-child,.yii-debug-toolbar__block *{
 	margin-top:0;
 }

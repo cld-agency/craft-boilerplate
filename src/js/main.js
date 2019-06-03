@@ -42,9 +42,9 @@ var CLIENTNAME = {
 	//
 	// Pass data-suffix="-something" to break the link
 	// between ids and location.hash, thereby preventing
-	// browser auto-scroll to the hash location (See e.g.
-	// product tabs, where we want them to be URL-addressable
-	// but don't want the scroll position to change on window.load)
+	// browser auto-scroll to the hash location (E.g. tab UIs,
+	// where we want them to be URL-addressable but don't want
+	// the scroll position to change on window.load)
 	// --------------------------------------------
 
 	onOff: function(el){
