@@ -1,38 +1,48 @@
 // --------------------------------------------
-// NAV
+// DESKTOP PRIMARY NAV
 // --------------------------------------------
 
 .primaryNav{
 
 }
 
+// --------------------------------------------
+// MOBILE NAV
+// --------------------------------------------
+
 .menuTrigger{
-	position:absolute;
-	top:11px;
-	right:$gutter;
-	z-index:10;
-	width:60px;
-	height:60px;
+	top:11px;right:$gutter;
+	width:50px;height:50px;
 	outline:0;
-	margin:0;
 	span{
-		margin:0;
-		position:absolute;
 		left:17px;
-		display:block;
-		height:2px;
-		width:27px;
+		height:2px;width:27px;
 		background:$accent;
 		transition:top .2s .25s, left .2s .25s, opacity .2s .25s, transform .2s 0s;
 		&:nth-child(1){ top:20px; }
-		&:nth-child(2){ top:28px;width:22px; }
-		&:nth-child(3){ top:37px;width:17px; }
+		&:nth-child(2){ top:28px; }
+		&:nth-child(3){ top:37px; }
+		.withNavOn &{
+			transition:background .2s, top .2s, left .2s, opacity .2s, transform .2s .25s;
+			&:nth-child(1),&:nth-child(3){ top:28px;width:27px; }
+			&:nth-child(2){ opacity:0; }
+			&:nth-child(1){ transform:rotate(45deg); }
+			&:nth-child(3){ transform:rotate(-45deg); }
+		}
 	}
-	&.active span {
-		& { transition:background .2s, top .2s, left .2s, opacity .2s, transform .2s .25s; }
-		&:nth-child(1),&:nth-child(3){ top:28px;width:27px; }
-		&:nth-child(2){ opacity:0; }
-		&:nth-child(1){ transform:rotate(45deg); }
-		&:nth-child(3){ transform:rotate(-45deg); }
-	}
+}
+
+.mobileNav {
+	background:$brand;
+	padding:85px 15px 0;
+	height:100%;width:85%;
+	top:0;right:0;
+	transform:translateX(100%);
+	transition:all 0.41s cubic-bezier(0.54, 0.74, 0.02, 0.95);
+	overflow-y:scroll;
+	overflow-x:hidden;
+	// enable inertial scrolling on iOS
+	-webkit-overflow-scrolling:touch;
+	.withNavOn &{ transform:translateX(0%) }
+	a{ padding:1em; }
 }

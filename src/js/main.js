@@ -5,8 +5,7 @@ var CLIENTNAME = {
 	// --------------------------------------------
 
 	getSettings: function(){
-		// this.$win		= $(window);
-		// etc
+		this.$html = $('html');
 	},
 
 	// --------------------------------------------
@@ -31,6 +30,28 @@ var CLIENTNAME = {
 		$('.js-onOff').click(function(){
 			CLIENTNAME.onOff($(this));
 			return false;
+		});
+
+		$('.js-mobileTrigger').click(function(){
+			CLIENTNAME.toggleMobileNav($(this));
+		});
+
+		// --------------------------------------------
+		// PREVENT BACKGROUND SCROLLING esp on iOS while
+		// various overlays are on.
+		// Uses this lib: https://github.com/willmcpo/body-scroll-lock
+		// --------------------------------------------
+
+		// toggle method allows a single element to do both on and off functions...
+		$('.js-toggleScrollLock').click(function(){
+			if ($(this).data('scrollLockState') == 'off') {
+				var target = $($(this).data('scrollLockEl'))[0];
+				bodyScrollLock.disableBodyScroll(target);
+				$(this).data('scrollLockState','on');
+			} else {
+				bodyScrollLock.clearAllBodyScrollLocks();
+				$(this).data('scrollLockState','off');
+			}
 		});
 	},
 
@@ -58,6 +79,23 @@ var CLIENTNAME = {
 			toggleOrigin.removeClass('active');
 			toggleTarget.add(el).addClass('active');
 		}
+	},
+
+	toggleMobileNav: function(triggerEl){
+
+		// toggle .withNavOn on <html> el...
+		CLIENTNAME.$html.toggleClass('withNavOn');
+
+		// toggle aria expanded on the trigger button...
+		var expanded = triggerEl.getAttribute('aria-expanded') === 'true' || false;
+		triggerEl.attr('aria-expanded', !expanded);
+
+		// toggle tabindices on the nav items to prevent keyboard focusing them while hidden.
+		// (Typically, you'd instead give the parent a [hidden] attribute which would
+		// remove the need for this (hidden children are not focussable))... BUT, doing
+		// that makes it tricky to use transitions, so instead we can turn the tabIndex
+		// from -1 to 0 (0 is basically 'auto').
+		$('.mobileNav a').attr('tabIndex', function(i,attr){ return this.tabIndex == '-1' ? '0' : '-1'; });
 	}
 };
 

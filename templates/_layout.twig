@@ -92,6 +92,38 @@
 
 	<header class="siteHeader">
 		<a class="logo"><img src="/assets/img/logo.svg" alt=""></a>
+
+		{# ======================================
+		MOBILE NAV
+		========================================= #}
+
+		<nav class="mini overlaidItem">
+			{# according to accessibility experts, the trigger button needs to be INSIDE the nav element #}
+			<button
+				type="button"
+				class="buttonReset menuTrigger block fixed z8 js-mobileTrigger js-toggleScrollLock"
+				aria-label="Navigation"
+				aria-expanded="false"
+				data-scroll-lock-el=".mobileNav"
+				data-scroll-lock-state="off"
+			>
+				<span class="block absolute"></span>
+				<span class="block absolute"></span>
+				<span class="block absolute"></span>
+			</button>
+
+			<div class="mobileNav fixed z6 bgBrand">
+				<ul>
+					{# set up a globalset called navs with a table field called primaryNav, with two columns for link and label... #}
+					{# {% for item in navs.primaryNav %}
+						<li><a class="block" href="{{ item.link ?? '#' }}">{{ item.label ?? 'click' }}</a></li>
+					{% endfor %} #}
+					<li><a class="block" href="#">link</a></li>
+
+					<li style="height:44px"><!--safari hack to avoid iOS bottom menu--></li>
+				</ul>
+			</div>
+		</nav>
 	</header>
 
 	{# =============================================================================== #}

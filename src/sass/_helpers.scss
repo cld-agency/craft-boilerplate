@@ -1,11 +1,6 @@
 // --------------------------------------------
-// GENERIC NON-SEMANTIC HELPERS
+// LOBOTOMISED OWL SPACING OVERRIDES
 // --------------------------------------------
-
-//.blockLink{display:block;}
-//.blockLink p{color:$bodyColor;}
-// .loading{ padding:20px 0;text-indent:-99999px; background: url("/assets/img/AjaxLoader.gif") no-repeat 50% 50%; }
-//.js .no-js, .no-js .js { display: none; }
 
 %spacing{
 	margin-top:1.1em;
@@ -19,11 +14,40 @@
 	@extend %spacing;
 }
 
+.mt0{ margin-top:0!important; }
+// .z1{ z-index:1 }
+// .z2{ z-index:2 }
+// .z3{ z-index:3 }
+// .z4{ z-index:4 }
+.z5{ z-index:5 }
+.z6{ z-index:6 }
+.z7{ z-index:7 }
+.z8{ z-index:8 }
+.z9{ z-index:9 }
+
 // --------------------------------------------
-// PERSPECTIVES for 3D
+// GENERIC UTILITY HELPERS
 // --------------------------------------------
 
-// .perspective{ perspective:800px; }
+.absolute{ position:absolute }
+.relative{ position:relative }
+.fixed{ position:fixed;}
+.alignCenter,.alignCenter *{ text-align:center; }
+.minHeight1{ min-height:1px; } // IE11 hack
+.wFull{ width:100%; }
+.bgCover{ background-size:cover;background-position:50%; }
+.block{ display:block; }
+
+// --------------------------------------------
+// COLOURS
+// --------------------------------------------
+
+// .bgLight{ background-color:$light; }
+.bgBrand{
+	background-color:$brand!important;
+	*{ color:#fff; }
+	a{ color: $accent; }
+}
 
 // --------------------------------------------
 // RESPONSIVE HELPERS
@@ -52,8 +76,8 @@
 // --------------------------------------------
 
 .flex{ display:flex; }
-// .flexStart { justify-content:flex-start; }
-// .flexEnd { justify-content:flex-end; }
+.flexStart { justify-content:flex-start; }
+.flexEnd { justify-content:flex-end; }
 .justifyBetween{ justify-content:space-between; }
 .justifyAround{ justify-content:space-around; }
 .justifyCenter{ justify-content:center; }
@@ -64,6 +88,14 @@
 // .flexRow{ flex-direction:row; }
 .flexColumn{ flex-direction:column; }
 .flexWrap{ flex-wrap:wrap; }
+.miniFlexLinearise{
+	display:flex;
+	flex-direction:column;
+	@media (min-width:$B) {
+		flex-direction:row;
+		> *{ margin-top:0; }
+	}
+}
 
 // --------------------------------------------
 // RESPONSIVE ASPECT RATIO HELPERS
