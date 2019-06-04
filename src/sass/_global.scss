@@ -7,7 +7,7 @@ div,main,article,aside,details,figcaption,figure,footer,header,hgroup,nav,sectio
 //audio,canvas,video{display:inline-block;}
 ::selection {background:$accent;color:#333;}
 ::-moz-selection {background:$accent;color:#333;}
-html{font-size:100%;text-size-adjust:100%;overflow-x:hidden;}
+html{font-size:100%;text-size-adjust:100%;}
 nav ul{list-style:none;padding:0}
 a{text-decoration:none;}
 iframe,object,embed,img{border:0;max-width:100%}

@@ -87,7 +87,7 @@ var CLIENTNAME = {
 		CLIENTNAME.$html.toggleClass('withNavOn');
 
 		// toggle aria expanded on the trigger button...
-		var expanded = triggerEl.getAttribute('aria-expanded') === 'true' || false;
+		var expanded = triggerEl[0].getAttribute('aria-expanded') === 'true' || false;
 		triggerEl.attr('aria-expanded', !expanded);
 
 		// toggle tabindices on the nav items to prevent keyboard focusing them while hidden.
