@@ -36,6 +36,7 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
         'useEmailAsUsername' => true,
         'usePathInfo' => true,
+        'errorTemplatePrefix' => "_errors/",
     ],
 
     // Live (production) environment
@@ -59,7 +60,7 @@ return [
     // Local (development) environment
     'local' => [
         'allowUpdates' => true,
-        'backupOnUpdate' => true,
+        'backupOnUpdate' => false,
         'devMode' => true,
         'enableTemplateCaching' => false,
         'userSessionDuration' => false,
