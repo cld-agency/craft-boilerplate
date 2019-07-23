@@ -35,7 +35,6 @@ return [
         'omitScriptNameInUrls' => true,
         'securityKey' => getenv('SECURITY_KEY'),
         'useEmailAsUsername' => true,
-        'usePathInfo' => true,
         'errorTemplatePrefix' => "_errors/",
     ],
 
