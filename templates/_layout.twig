@@ -50,8 +50,14 @@
 	{% set ogTitle = ogTitle is defined and ogTitle ? ogTitle : title is defined and title ? title : siteName %}
 	{% set ogDesc = ogDesc is defined and ogDesc ? ogDesc : metaDesc is defined and metaDesc ? metaDesc : null %}
 
+	{#
+	We prefer to use site-root relative URIs for our asset base URLs, which means
+	we'll need to manually append the siteUrl onto externally referenced images such
+	as the OG image. Craft forces siteUrl to use a trailing slash, so we'll need to
+	trim it here to avoid a double-slash.
+	 #}
 	{% if ogImg is defined and ogImg %}
-		{% set ogImg = ogImg.getUrl(transforms.ogImg) %}
+		{% set ogImg = siteUrl|trim('/', 'right') ~ ogImg.getUrl(transforms.ogImg) %}
 	{% else %}
 		{% set ogImg = siteUrl ~ 'assets/img/logo-og.png' %}
 	{% endif %}
