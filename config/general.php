@@ -16,6 +16,7 @@ return [
         'securityKey' => getenv('SECURITY_KEY'),
         'useProjectConfigFile' => true,
 
+        // the siteUrl setting in the control panel (Settings > Sites) should be left blank and will auto-populate with this value
         'siteUrl' => getenv('SITE_URL'),
         // if multi-site, do it like this...
         // 'siteUrl' => [
@@ -73,6 +74,6 @@ return [
         'enableTemplateCaching' => false,
         'testToEmailAddress' => getenv('SYSTEM_EMAIL'),
         // this marks any strings that are translated, making it easier to spot ones which are not...
-        'translationDebugOutput' => true,
+        //'translationDebugOutput' => true,
     ],
 ];
