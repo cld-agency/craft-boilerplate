@@ -13,44 +13,30 @@ THE PURPOSE OF THIS TEMPLATE IS TO SET
 ALL THE DATA READY FOR CONSUMPTION BY _listing/default.
 ========================================= #}
 
+{# example code only... #}
 
-{# Example code only... #}
-
-{# {% set title = entry.titleTag ? entry.titleTag : entry.title|replace('Listing','') %}
+{# {% set title = entry.titleTag ? entry.titleTag : entry.title|replace('Listing page','') %}
 {% set metaDesc = entry.metaDesc ?? null %}
+{% set perPage = 12 %}
 
 {% switch craft.app.request.segments|last %}
 
-	{% case 'news' %}
-		{% set entryIds = craft.entries.section('news').ids() %}
-		{% set entriesSection = 'news' %}
-		{% set entryCats = 'newsCategory' %}
-		{% set categories = craft.categories({
-			group: 'news',
-			relatedTo: { sourceElement: entryIds }
-		})%}
+	{% case 'blog-post' %}
+		{% set entriesSection = 'blog' %}
+		{% set catGroupToList = 'blogCategories' %}
 
 	{% case 'case-studies' %}
-		{% set entryIds = craft.entries.section('caseStudies').ids() %}
 		{% set entriesSection = 'caseStudies' %}
-		{% set entryCats = 'caseStudyCategory' %}
-		{% set categories = craft.categories({
-			group: 'caseStudies',
-			relatedTo: { sourceElement: entryIds }
-		})%}
-
-	{% case 'careers' %}
-		{% set entriesSection = 'careers' %}
-		{% set entryCats = null %}
-
-	{% case 'press' %}
-		{% set entriesSection = 'pressAndMedia' %}
-		{% set entryCats = null %}
-
-	{% case 'brochures' %}
-		{% set entriesSection = 'downloads' %}
-		{% set entryCats = null %}
+		{% set catGroupToList = 'caseStudyCategories' %}
 
 {% endswitch %}
 
-{% paginate craft.entries.section(entriesSection).limit(12) as pageInfo, pageEntries %} #}
+{% if catGroupToList %}
+	{% set entryIds = craft.entries.section(entriesSection).ids() %}
+	{% set categories = craft.categories({
+		group: catGroupToList,
+		relatedTo: { sourceElement: entryIds }
+	})%}
+{% endif %}
+
+{% paginate craft.entries.section(entriesSection).limit(perPage) as pageInfo, pageEntries %} #}

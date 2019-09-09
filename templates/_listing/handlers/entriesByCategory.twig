@@ -15,28 +15,28 @@ ALL THE DATA READY FOR CONSUMPTION BY _listing/default.
 
 {# example code only... #}
 
-{# {% set item = category %}
-{% set title = item.titleTag ? item.titleTag : item.title|replace('Listing', '') %}
-{% set metaDesc = item.metaDesc ?? null %}
+{# {% set title = entry.titleTag ? entry.titleTag : entry.title|replace('Listing page','') %}
+{% set metaDesc = entry.metaDesc ?? null %}
+{% set perPage = 12 %}
 
-{% switch craft.app.request.getSegment(1) %}
+{% switch craft.app.request.segments|last %}
 
-	{% case 'news' %}
-		{% set entryIds = craft.entries.section('news').ids() %}
-		{% set entryCats = 'newsCategory' %}
-		{% set categories = craft.categories({
-			group: 'news',
-			relatedTo: { sourceElement: entryIds }
-		})%}
+	{% case 'blog' %}
+		{% set entriesSection = 'blog' %}
+		{% set catGroupToList = 'blogCategories' %}
 
 	{% case 'case-studies' %}
-		{% set entryIds = craft.entries.section('caseStudies').ids() %}
-		{% set entryCats = 'caseStudyCategory' %}
-		{% set categories = craft.categories({
-			group: 'caseStudies',
-			relatedTo: { sourceElement: entryIds }
-		})%}
+		{% set entriesSection = 'caseStudies' %}
+		{% set catGroupToList = 'caseStudyCategories' %}
 
 {% endswitch %}
 
-{% paginate craft.entries.relatedTo(category).limit(12) as pageInfo, pageEntries %} #}
+{% if catGroupToList %}
+	{% set entryIds = craft.entries.section(entriesSection).ids() %}
+	{% set categories = craft.categories({
+		group: catGroupToList,
+		relatedTo: { sourceElement: entryIds }
+	})%}
+{% endif %}
+
+{% paginate craft.entries.relatedTo(category).limit(perPage) as pageInfo, pageEntries %} #}
