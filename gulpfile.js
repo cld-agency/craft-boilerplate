@@ -74,7 +74,7 @@ function _styles(){
    return gulp.src(srcFolder + '/sass/style.scss')
         .pipe(sass({ outputStyle: 'compressed' }))
         .on('error', function(err) { gutil.log('Line: ' + err.lineNumber + ' - ' + err.message); gutil.beep(); })
-        .pipe(autoprefixer({ grid:true, browsers: ['> 1%'] }))
+        .pipe(autoprefixer({ grid:true }))
         .pipe(gulp.dest(compiledFolder+'/css')) // Duplicated as work-around for browserSync and file rev issues
         .pipe(browserSync.reload({ stream: true }))
         .pipe(rev())

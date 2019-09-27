@@ -18,6 +18,9 @@
     "gulp-util": "3.0.8",
     "jshint": "2.9.7"
   },
+  "browserslist": [
+    "> 1%"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
